@@ -147,7 +147,7 @@ print(syn)
 print(len(syn))  # Expect 37, Number of data to be synthesize once : int(0.5*25) = 12. 
 ```
 
-### Some Test Results
+### Test Result
 Below are just some result I would like to share to compare the synthetic data and their original counterparts:
 ``` Python
 syn = sm.augment(minority, 100, 7)
