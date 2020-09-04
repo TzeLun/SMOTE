@@ -75,7 +75,7 @@ The code below shows how SMOTE synthesizes data by multiplying a random variance
             mul = mul - 1
 ```
 
-### Algorithm as a Whole
+### SMOTE Algorithm as a Whole
 What was shown is for one data sample. For all data samples from the dataset, below shows the whole algorithm:
 ``` Python
  # Algorithm for SMOTE:
@@ -123,4 +123,5 @@ I wrote the algorithm in such a way that it also helps assigning the class label
     return dataset + sdata
 ```
 
-
+## Algorithm Test
+I created a simple binary dataset labeled as [sample.csv](https://github.com/TzeLun/SMOTE/blob/master/sample.csv) for anyone who wants to play with the algorithm. The dataset has 50 data of class 'A' and 25 data of class 'B'. 
