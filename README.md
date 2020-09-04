@@ -124,4 +124,42 @@ I wrote the algorithm in such a way that it also helps assigning the class label
 ```
 
 ## Algorithm Test
-I created a simple binary dataset labeled as [sample.csv](https://github.com/TzeLun/SMOTE/blob/master/sample.csv) for anyone who wants to play with the algorithm. The dataset has 50 data of class 'A' and 25 data of class 'B'. 
+I created a simple binary dataset labeled as [sample.csv](https://github.com/TzeLun/SMOTE/blob/master/sample.csv) for anyone who wants to play with the algorithm. The dataset has 50 data of class 'A' and 25 data of class 'B'. I also include a Python Script called [sample.py](https://github.com/TzeLun/SMOTE/blob/master/sample.py) so you can start testing the algorithm promptly. The code is shown below:
+``` Python
+import pandas as pd
+import SMOTE as sm
+
+df = pd.read_csv('sample.csv', header=None)
+
+
+# Simple pre-processing function to get the desired format for the dataset
+def pre_processing(dataset):
+    d = dataset.T
+    return [list(d[i]) for i in d]
+
+
+df = pre_processing(df)
+minority = df[50:75]  # Use all 25 class 'B' data as the input dataset
+
+# The SMOTE function is labelled as augment()
+syn = sm.augment(minority, 50, 5)
+print(syn)
+print(len(syn))  # Expect 37, Number of data to be synthesize once : int(0.5*25) = 12. 
+```
+
+### Some Test Results
+Below are just some result I would like to share to compare the synthetic data and their original counterparts:
+``` Python
+syn = sm.augment(minority, 100, 7)
+# Comparing the first three data and their synthetic data
+print(syn[0:3])
+print(syn[25:28])
+```
+**Output :**
+``` Python
+# Original data
+[[59.61642961, 8.595110319, 50.31237016, 'B'], [63.02832815, 8.697484548, 50.47710068, 'B'], [56.51687181, 8.185672353, 55.06152713, 'B']]
+
+# Synthetic data
+[[59.466073930579306, 8.543403844027365, 50.69430045815887, 'B'], [65.83293422613062, 8.208685479392788, 53.343374315915824, 'B'], [56.393525779457946, 8.27611909724483, 54.80230749914403, 'B']]
+```
